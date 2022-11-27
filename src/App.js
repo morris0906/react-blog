@@ -3,6 +3,7 @@ import "./App.css";
 import Add from "./Components/Add";
 import Home from "./Components/Home";
 import NavBar from "./Components/NavBar";
+import Blog from "./Components/Blog";
 
 function App() {
   return (
@@ -11,8 +12,9 @@ function App() {
         <NavBar />
         <div className="content">
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/add" element={<Add />} />
+            <Route exact path="/" element={<Home />} />
+            <Route exact path="/add" element={<Add />} />
+            <Route path="/blogs/:id" element={<Blog />} />
           </Routes>
         </div>
       </div>
