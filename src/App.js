@@ -4,6 +4,7 @@ import Add from "./Components/Add";
 import Home from "./Components/Home";
 import NavBar from "./Components/NavBar";
 import Blog from "./Components/Blog";
+import WrongPages from "./Components/WrongPages";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
             <Route exact path="/" element={<Home />} />
             <Route exact path="/add" element={<Add />} />
             <Route path="/blogs/:id" element={<Blog />} />
+            <Route path="*" element={<WrongPages />} />
           </Routes>
         </div>
       </div>
