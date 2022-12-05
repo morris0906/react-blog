@@ -7,11 +7,12 @@ const Add = () => {
   const [body, setBody] = useState("");
   const [author, setAuthor] = useState("mario");
   const [isPending, setIsPending] = useState(false);
+  const [tag, setTag] = useState("Tag 1");
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const blog = { title, body, author };
+    const blog = { title, body, author, tag };
 
     setIsPending(true);
 
@@ -46,6 +47,12 @@ const Add = () => {
         <select value={author} onChange={(e) => setAuthor(e.target.value)}>
           <option value="mario">mario</option>
           <option value="yoshi">yoshi</option>
+        </select>
+        <label>Tag: </label>
+        <select value={tag} onChange={(e) => setTag(e.target.value)}>
+          <option value="Tag 1">Tag 1</option>
+          <option value="Tag 2">Tag 2</option>
+          <option value="Misc">Misc</option>
         </select>
         {!isPending && <button>Add Blog</button>}
         {isPending && <button>Adding Blog</button>}

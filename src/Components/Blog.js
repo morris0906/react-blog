@@ -18,6 +18,7 @@ const Blog = () => {
       navigate("/");
     });
   };
+
   return (
     <div className="blog-details">
       {isPending && <div>Loading...</div>}
@@ -25,7 +26,9 @@ const Blog = () => {
       {blog && (
         <article>
           <h2>{blog.title}</h2>
-          <p>Written by {blog.author}</p>
+          <p>
+            Written by {blog.author} {blog.tag}
+          </p>
           <div>{blog.body}</div>
           <button onClick={handleClick}>Delete</button>
         </article>

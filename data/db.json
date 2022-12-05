@@ -13,16 +13,11 @@
       "id": 3
     },
     {
-      "title": "354",
-      "body": "2345",
+      "title": "Tag test",
+      "body": "test",
       "author": "mario",
+      "tag": "Tag 1",
       "id": 4
-    },
-    {
-      "title": "123",
-      "body": "1243",
-      "author": "mario",
-      "id": 7
     }
   ]
 }
