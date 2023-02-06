@@ -9,10 +9,10 @@ const Blog = () => {
     data: blog,
     isPending,
     error,
-  } = useFetch("http://localhost:8000/blogs/" + id);
+  } = useFetch("https://localhost:5000/blogs/" + id);
 
   const handleClick = () => {
-    fetch("http://localhost:8000/blogs/" + blog.id, {
+    fetch("https://localhost:5000/blogs/" + blog.id, {
       method: "DELETE",
     }).then(() => {
       navigate("/");

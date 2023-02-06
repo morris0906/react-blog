@@ -12,13 +12,15 @@ const Add = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const blog = { title, body, author, tag };
+    const blog = { title, blogBody: body, author, tag };
 
     setIsPending(true);
 
-    fetch("http://localhost:8000/blogs", {
+    fetch("https://localhost:5000/blog/add", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify(blog),
     }).then(() => {
       setIsPending(false);
