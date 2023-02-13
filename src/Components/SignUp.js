@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "./LogIn.css";
 
 const Register = () => {
   const [username, setUsername] = useState("");
@@ -16,16 +17,16 @@ const Register = () => {
 
     setIsPending(true);
 
-    //     fetch("https://localhost:5000/blog/add", {
-    //       method: "POST",
-    //       headers: {
-    //         "Content-Type": "application/json",
-    //       },
-    //       body: JSON.stringify(blog),
-    //     }).then(() => {
-    //       setIsPending(false);
-    //       navigate("/");
-    //     });
+    fetch("https://localhost:5000/addUser", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(userInfo),
+    }).then(() => {
+      setIsPending(false);
+      navigate("/signin");
+    });
   };
 
   return (
@@ -36,29 +37,30 @@ const Register = () => {
         <input
           type="text"
           required
-          value={username}
+          value={firstName}
           onChange={(e) => setFirstName(e.target.value)}
         />
         <label>Last Name: </label>
         <input
           required
-          value={password}
+          value={lastName}
           onChange={(e) => setLastName(e.target.value)}
         />
         <label>Email Address: </label>
         <input
           required
-          value={password}
+          value={emailAddress}
           onChange={(e) => setEmailAddress(e.target.value)}
         />
         <label>Username: </label>
         <input
           required
-          value={password}
+          value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
         <label>Password: </label>
         <input
+          type="password"
           required
           value={password}
           onChange={(e) => setPassword(e.target.value)}

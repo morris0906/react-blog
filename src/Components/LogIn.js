@@ -5,11 +5,11 @@ const LogIn = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [isPending, setIsPending] = useState(false);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const userInfo = { username, password };
+    // const userInfo = { username, password };
 
     setIsPending(true);
 
