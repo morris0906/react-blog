@@ -7,21 +7,21 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  const [emailAddress, setEmailAddress] = useState("");
+  const [email, setEmailAddress] = useState("");
   const [isPending, setIsPending] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const userInfo = { username, password, firstName, lastName, emailAddress };
+    const userInfo = { username, password, firstName, lastName, email };
 
     setIsPending(true);
 
     fetch("https://localhost:5000/addUser", {
-      method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
+      method: "POST",
       body: JSON.stringify(userInfo),
     }).then(() => {
       setIsPending(false);
@@ -31,7 +31,7 @@ const Register = () => {
 
   return (
     <div className="Register">
-      <h2>Sign In</h2>
+      <h2>Sign Up</h2>
       <form onSubmit={handleSubmit}>
         <label>First Name: </label>
         <input
@@ -42,18 +42,21 @@ const Register = () => {
         />
         <label>Last Name: </label>
         <input
+          type="text"
           required
           value={lastName}
           onChange={(e) => setLastName(e.target.value)}
         />
         <label>Email Address: </label>
         <input
+          type="text"
           required
-          value={emailAddress}
+          value={email}
           onChange={(e) => setEmailAddress(e.target.value)}
         />
         <label>Username: </label>
         <input
+          type="text"
           required
           value={username}
           onChange={(e) => setUsername(e.target.value)}
