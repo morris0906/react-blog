@@ -8,25 +8,33 @@ const Register = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmailAddress] = useState("");
+  const [passwordVal, setPasswordVal] = useState("");
   const [isPending, setIsPending] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    const userInfo = { username, password, firstName, lastName, email };
+    if (passwordVal !== password) {
+      document.getElementById("passwordCheck").innerHTML =
+        "Your passwords do not match!";
+      alert("Check passwords");
+    } else {
+      document.getElementById("passwordCheck").innerHTML = "";
 
-    setIsPending(true);
+      e.preventDefault();
+      const userInfo = { username, password, firstName, lastName, email };
+      setIsPending(true);
 
-    fetch("https://localhost:5000/addUser", {
-      headers: {
-        "Content-Type": "application/json",
-      },
-      method: "POST",
-      body: JSON.stringify(userInfo),
-    }).then(() => {
-      setIsPending(false);
-      navigate("/signin");
-    });
+      fetch("https://localhost:5000/addUser", {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        method: "POST",
+        body: JSON.stringify(userInfo),
+      }).then(() => {
+        setIsPending(false);
+        navigate("/signin");
+      });
+    }
   };
 
   return (
@@ -68,6 +76,14 @@ const Register = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
+        <label>Re-enter Password: </label>
+        <input
+          type="password"
+          required
+          value={passwordVal}
+          onChange={(e) => setPasswordVal(e.target.value)}
+        />
+        <p id="passwordCheck"></p>
         {!isPending && <button>Submit</button>}
         {isPending && <button>Please wait</button>}
       </form>
